@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 2019_07_05_013613) do
   enable_extension "plpgsql"
 
   create_table "urls", force: :cascade do |t|
-    t.string "origina_url"
+    t.string "original_url"
     t.string "short_url"
     t.string "title"
     t.integer "access"
