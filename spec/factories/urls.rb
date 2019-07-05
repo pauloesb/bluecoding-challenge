@@ -1,8 +1,5 @@
 FactoryBot.define do
   factory :url do
-    origina_url { "MyString" }
-    short_url { "MyString" }
-    title { "MyString" }
-    access { 1 }
+    original_url { "http://www.google.com" }
   end
 end
