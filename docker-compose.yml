@@ -5,6 +5,7 @@ services:
     container_name: bc_db
     image: postgres:9.5-alpine
     ports: [ "15432:5432" ]
+    volumes: [ ".storage:/var/lib/postgresql/data" ]
     networks: [ bc-net ]
     logging:
       driver: "none"
