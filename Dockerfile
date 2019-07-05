@@ -12,6 +12,8 @@ WORKDIR ${APP_HOME}
 
 COPY Gemfile* ${APP_HOME}/
 
+RUN gem install bundle
+RUN bundle update --bundler
 RUN bundle install --jobs=10 --retry=3 --path=${BUNDLE_PATH} --clean && \
   rm -rf /usr/local/bundle/bundler/gems/*/.git \
   /usr/local/bundle/cache/
