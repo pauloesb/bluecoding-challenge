@@ -5,3 +5,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+print "=== Inserting domains into database ===\n"
+Csv.foreach("db/domains.csv") do |url|
+    Url.create(original_url: url.first)
+end
+print "=== A total of 100 Url's were added ===\n"
