@@ -1,9 +1,6 @@
 class Url < ApplicationRecord
+    include UrlConcerns
     validates :original_url, presence: true
-
-    before_create :generate_short_url
-
-    def generate_short_url
-        self.short_url = "#{self.object_id}"
-    end
+    validates_format_of :original_url,
+        with: /\A(?:(?:http(s)*):\/\/|\b(?:[a-z\d]+\.))(?:(?:[^\s()<>]+|\((?:[^\s()<>]+|(?:\([^\s()<>]+\)))?\))+(?:\((?:[^\s()<>]+|(?:\(?:[^\s()<>]+\)))?\)|[^\s`!()\[\]{};:'".,<>?«»“”‘’]))?\z/
 end
