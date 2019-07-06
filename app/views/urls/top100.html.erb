@@ -1,0 +1,22 @@
+<div>
+    <h1>Top 100 Most Frequented Links</h1>
+    <table>
+        <tr>
+            <th>Top</th>
+            <th>Number of Access</th>
+            <th>Title</th>
+            <th>Original Url</th>
+            <th>Shortened Url</th>
+        </tr>
+        <% @urls.each do |url| %>
+        <tr>
+            <th><%= @counter %></th>
+            <th><%= url.access %></th>
+            <th><%= url.title || "Still getting title..." %></th>
+            <th><%= url.original_url %></th>
+            <th><%= redirect_url(url.short_url) %></th>
+        </tr>
+        <% @counter+=1 %>
+        <% end %>
+    </table>
+</div>

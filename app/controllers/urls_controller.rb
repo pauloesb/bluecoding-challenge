@@ -19,6 +19,11 @@ class UrlsController < ApplicationController
     end
   end
 
+  def top100
+    @counter = 1
+    @urls = Url.top_100
+  end
+
   private
 
   def find_url
