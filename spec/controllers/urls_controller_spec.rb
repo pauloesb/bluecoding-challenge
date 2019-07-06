@@ -16,13 +16,23 @@ RSpec.describe UrlsController, type: :controller do
 
   describe "POST #create" do
     it "create a new Url" do
-      expect{ post :create, params: {url: attributes_for(:url)}}.to change(Url, :count).by(1)
+      expect{ post :create, params: { url: attributes_for(:url) } }.to change(Url, :count).by(1)
+    end
+  end
+
+  describe "GET #result" do
+    before :each do
+      post :create, params: { url: attributes_for(:url) } 
     end
 
-    it "redirect short url from the original url" do
-      url = FactoryBot.create(:url)
-      post :create, params: {url: attributes_for(:url)}
-      expect(response).to redirect_to Url.find_by_original_url(url.original_url).short_url
+    it "returns http success to a result" do
+      get :result, params: { short_url: Url.last.short_url }
+      expect(response).to have_http_status(:success)
+    end
+
+    it "render result" do
+      subject { get :result, params: {short_url: Url.last.short_url } }
+      expect(subject).to redirect_to result_url(Url.last.short_url)
     end
   end
 
