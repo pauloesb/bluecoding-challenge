@@ -50,6 +50,11 @@ RSpec.describe UrlsController, type: :controller do
       get :redirect, params: {short_url: Url.last.short_url } 
       expect(Url.last.access).to be(1)
     end
+
+    it "returns http redirect" do
+      get :redirect, params: {short_url: Url.last.short_url } 
+      expect(response).to have_http_status(:redirect) 
+    end
   end
 
 end
