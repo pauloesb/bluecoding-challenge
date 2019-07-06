@@ -36,4 +36,20 @@ RSpec.describe UrlsController, type: :controller do
     end
   end
 
+  describe "GET #redirect" do
+    before :each do
+      post :create, params: { url: attributes_for(:url) } 
+    end
+
+    it "redirect to the original url" do
+      get :redirect, params: { short_url: Url.last.short_url }
+      expect(response).to redirect_to Url.last.original_url
+    end
+
+    it "raise the access count by 1" do
+      get :redirect, params: {short_url: Url.last.short_url } 
+      expect(Url.last.access).to be(1)
+    end
+  end
+
 end
