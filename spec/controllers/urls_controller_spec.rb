@@ -64,4 +64,19 @@ RSpec.describe UrlsController, type: :controller do
     end
   end
 
+  describe "GET #top100" do
+    before :each do
+      i = 0
+      while i < 100
+        url = FactoryBot.create(:url)
+        i+=1
+      end
+    end
+
+    it "returns top 100 links" do
+      get :top100
+      expect(assigns(:urls).count).to eq(Url.top_100.count)
+    end
+  end
+
 end
