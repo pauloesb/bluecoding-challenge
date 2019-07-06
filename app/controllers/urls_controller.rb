@@ -1,8 +1,13 @@
 class UrlsController < ApplicationController
-  before_action :find_url, only: :result
+  before_action :find_url, only: [:redirect, :result]
 
   def index 
     @url = Url.new
+  end
+
+  def redirect
+    @url.update(access: @url.access+1)
+    redirect_to @url.original_url
   end
 
   def create
