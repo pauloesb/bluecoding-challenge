@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 2019_07_05_013613) do
     t.string "original_url"
     t.string "short_url"
     t.string "title"
-    t.integer "access"
+    t.integer "access", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -4,7 +4,7 @@ class CreateUrls < ActiveRecord::Migration[5.2]
       t.string :original_url
       t.string :short_url
       t.string :title
-      t.integer :access
+      t.integer :access, default: 0
 
       t.timestamps
     end
