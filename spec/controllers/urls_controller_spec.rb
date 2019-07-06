@@ -38,7 +38,9 @@ RSpec.describe UrlsController, type: :controller do
 
   describe "GET #redirect" do
     before :each do
-      post :create, params: { url: attributes_for(:url) } 
+      Sidekiq::Testing.inline! do
+        post :create, params: { url: attributes_for(:url) } 
+      end
     end
 
     it "redirect to the original url" do
@@ -54,6 +56,11 @@ RSpec.describe UrlsController, type: :controller do
     it "returns http redirect" do
       get :redirect, params: {short_url: Url.last.short_url } 
       expect(response).to have_http_status(:redirect) 
+    end
+
+    it "contains the title after saving the url" do
+      get :redirect, params: {short_url: Url.last.short_url } 
+      expect(Url.last.title).to eq("Google")
     end
   end
 
