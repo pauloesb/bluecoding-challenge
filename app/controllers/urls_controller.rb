@@ -12,10 +12,12 @@ class UrlsController < ApplicationController
 
   def create
     @url = Url.new(url_params)
-    if @url.save
-      flash[:success] = "Shortened with success!"
-      redirect_to result_path(@url.short_url)
-    else
+    respond_to do |format|
+      if @url.save
+        format.html { redirect_to result_path(@url.short_url), notice: "Link shortened with success!" }
+      else
+        format.html { redirect_to root_path, notice: "Unable to shorten this link!" }
+      end
     end
   end
 
@@ -26,8 +28,13 @@ class UrlsController < ApplicationController
 
   private
 
+  def url_not_found
+      @url || (redirect_to root_path, notice: "This record doesn't exist!")
+  end
+
   def find_url
     @url = Url.find_by_short_url(params[:short_url])
+    url_not_found
   end
 
   def url_params
