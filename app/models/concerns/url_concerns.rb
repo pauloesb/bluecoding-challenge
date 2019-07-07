@@ -7,12 +7,15 @@ module UrlConcerns
         after_create :retrieve_title
     end
 
+    def already_shortened_url?
+        Url.find_by_original_url(normalize)
+    end
+
     private
 
     def generate_short_url
-        length_url_instance = LengthUrl.first || LengthUrl.create!
-        length_url_instance.update(size: length_url_instance.size+1) if Url.count > 62**length_url_instance.size
-        size_url = length_url_instance.size
+        LengthUrl.increase if Url.count > 62**LengthUrl.size
+        size_url = LengthUrl.size
         chars = ['A'..'Z','a'..'z','0'..'9'].map{|x| x.to_a}.flatten
         self.short_url = size_url.times.map{chars.sample}.join
         Url.find_by_short_url(self.short_url) && (self.short_url = size_url.times.map{chars.sample}.join)
