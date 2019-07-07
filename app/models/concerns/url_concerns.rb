@@ -10,11 +10,16 @@ module UrlConcerns
     private
 
     def generate_short_url
-        self.short_url = "#{self.object_id}"
+        length_url_instance = LengthUrl.first || LengthUrl.create!
+        length_url_instance.update(size: length_url_instance.size+1) if Url.count > 62**length_url_instance.size
+        size_url = length_url_instance.size
+        chars = ['A'..'Z','a'..'z','0'..'9'].map{|x| x.to_a}.flatten
+        self.short_url = size_url.times.map{chars.sample}.join
+        Url.find_by_short_url(self.short_url) && (self.short_url = size_url.times.map{chars.sample}.join)
     end
 
     def retrieve_title
-        TitleRetrieverWorker.perform_async(self.id)
+        TitleRetrieverWorker.perform_in(1.seconds, self.short_url)
     end
 
     def normalize
