@@ -1,3 +1,127 @@
 /*
  *= require gritter
  */
+
+* {
+    font-family: 'Open Sans', sans-serif;
+ }
+
+body {
+  margin: 0;
+  display: flex; 
+  align-items: flex-start;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+.card-container {
+  width: 500px;
+  padding: 50px;
+  padding-top: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-top: 100px;
+  -webkit-box-shadow: -5px 10px 20px 1px rgba(0,0,0,0.5);
+  -moz-box-shadow: -5px 10px 20px 1px rgba(0,0,0,0.5);
+  box-shadow: -5px 10px 20px 1px rgba(0,0,0,0.5);
+  text-align: center;
+
+  .sp-container {
+    padding: 10px 15px;
+    background: #b7b7b7;
+    border-radius: 5px;
+    -webkit-box-shadow: -5px 10px 20px 1px rgba(0,0,0,0.5);
+    -moz-box-shadow: -5px 10px 20px 1px rgba(0,0,0,0.5);
+    box-shadow: -5px 10px 20px 1px rgba(0,0,0,0.5);
+    text-align: center;
+
+    & > span > a {
+      text-decoration: none;
+      transition: opacity 0.5s;
+      color: #190FAB;
+    }
+
+    & > span > a:hover {
+      text-decoration: underline;
+      opacity: 0.6;
+    }
+  }
+
+  h1 {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+  form {
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    label {
+      font-weight: bold;
+
+      input {
+        border: 1px solid #000;
+        border-radius: 10px;
+        padding: 5px;
+        width: 60%;
+        font-size: 16px;
+        outline: none;
+      }
+    }
+
+    .submit-container {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+
+    .btn-submit {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 20px;
+      background-color: #c1c1c1;
+      font-weight: bold;
+      color: #ffffff;
+      border-radius: 15px;
+      transition: opacity 0.5s;
+      cursor: pointer;
+      width: 130px;
+      outline: none !important;
+    }
+
+    .btn-submit:hover {
+      opacity: 0.5;
+    }
+
+  }
+
+  .link-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .link-container a {
+    text-align: center;
+    text-decoration: none;
+    background-color: #ccc;
+    border: none;
+    color: white;
+    padding: 5px 20px;
+    border-radius: 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    margin: 4px 2px;
+    transition: opacity 0.5s;
+    cursor: pointer;
+  }
+
+  .link-container a:hover {
+    opacity: 0.5;
+  }
+}

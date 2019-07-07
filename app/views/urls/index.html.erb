@@ -1,11 +1,16 @@
-<div>
+<div class="card-container index">
     <h1>BC Link Shortener</h1>
     <%= form_for @url do |f| %>
         <%= f.label :original_url do %>
             Insert Url to Shorten:
             <%= f.text_field(:original_url)  %>
         <% end %>
-        <%= f.submit "Submit" %>
+        <br/>
+        <div class="submit-container">
+        <%= f.submit "Submit", class: "btn-submit" %>
+        </div>
     <% end %>
-    <%= link_to "Top 100", top_100_path %>
+    <div class="link-container">
+        <%= link_to "Top 100", top_100_path %>
+    </div>
 </div>

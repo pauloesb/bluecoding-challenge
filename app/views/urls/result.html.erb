@@ -1,7 +1,11 @@
-<div>
+<div class="card-container result">
     <h1>Result</h1>
-    <h2>Your url</h2>
-    <span id="original_url"><%= @url.original_url %></span>
-    <h2>Your shortened url<h2>
-    <span id="short_url"><%= redirect_url(@url.short_url) %></span>
+        <h2>Your URL - Normalized</h2>
+    <div class="sp-container original">
+        <span id="original_url"><%= link_to @url.original_url %></span>
+    </div>
+        <h2>Your Short URL</h2>
+    <div class="sp-container short">
+        <span id="short_url"><%= link_to redirect_url(@url.short_url) %></span>
+    </div>
 </div>
