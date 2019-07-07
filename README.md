@@ -11,6 +11,7 @@
 - Make sure you have Redis installed
 - Set these env in your machine
 -- export PORT=3000 (Or another free port if 3000 is in use)
+
 -- export RAILS_ENV=production (Or development if you want to test in dev environment)
 
 ## Running the solution:
