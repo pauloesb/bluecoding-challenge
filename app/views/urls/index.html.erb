@@ -1,7 +1,7 @@
 <div>
     <h1>BC Link Shortener</h1>
     <%= form_for @url do |f| %>
-        <%= f.label for: :original_url do %>
+        <%= f.label :original_url do %>
             Insert Url to Shorten:
             <%= f.text_field(:original_url)  %>
         <% end %>

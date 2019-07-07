@@ -1,7 +1,7 @@
 <div>
     <h1>Result</h1>
     <h2>Your url</h2>
-    <b><%= @url.original_url %></b>
+    <span id="original_url"><%= @url.original_url %></span>
     <h2>Your shortened url<h2>
-    <b><%= redirect_url(@url.short_url) %></b>
+    <span id="short_url"><%= redirect_url(@url.short_url) %></span>
 </div>
