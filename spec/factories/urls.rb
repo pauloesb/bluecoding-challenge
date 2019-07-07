@@ -19,5 +19,9 @@ FactoryBot.define do
     factory :dummy_url do
       original_url { "http://my.dummy.site.com" }
     end
+
+    factory :normalize_url do
+      original_url { "https://www.g1.globo.com.br/" }
+    end
   end
 end

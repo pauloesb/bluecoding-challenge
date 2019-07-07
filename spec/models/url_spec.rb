@@ -23,6 +23,11 @@ RSpec.describe Url, type: :model do
       url = FactoryBot.create(:url)
       expect(url.short_url).to_not be_empty 
     end
+    
+    it "normalize an url upon insert on db" do
+      url = FactoryBot.create(:normalize_url)
+      expect(Url.last.original_url).to eq("http://g1.globo.com.br")
+    end
 
     # TO-DO / Work on this test later
     # it "dispatch a job to get a title after saved a url" do
