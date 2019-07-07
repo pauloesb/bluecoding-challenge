@@ -12,14 +12,14 @@ class TitleRetrieverWorker
         if response.to_s.match(/<title?\s?.*>(.*)<\/title>/)
           url.update(title: parse_treatment($1))
         else
-          url.update(title: "Title not found!")
+          url.update(title: "Title not found! - #{url.original_url}")
         end
       rescue HTTParty::RedirectionTooDeep
-        url.update(title: "Error - Too Many Redirections!")
+        url.update(title: "Error - Too Many Redirections! - #{url.original_url}")
       rescue Errno::ECONNREFUSED
-        url.update(title: "Error - Site Unavailable!")
+        url.update(title: "Error - Site Unavailable! - #{url.original_url}")
       rescue SocketError
-        url.update(title: "Error - Doesn't exist!")
+        url.update(title: "Error - Doesn't exist! - #{url.original_url}")
       end
     end
 
