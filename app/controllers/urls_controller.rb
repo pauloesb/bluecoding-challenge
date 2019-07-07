@@ -13,10 +13,14 @@ class UrlsController < ApplicationController
   def create
     @url = Url.new(url_params)
     respond_to do |format|
-      if @url.save
-        format.html { redirect_to result_path(@url.short_url), notice: "Link shortened with success!" }
+      unless @url.already_shortened_url?
+        if @url.save
+          format.html { redirect_to result_path(@url.short_url), notice: "Link shortened with success!" }
+        else
+          format.html { redirect_to root_path, notice: "Unable to shorten this link!" }
+        end
       else
-        format.html { redirect_to root_path, notice: "Unable to shorten this link!" }
+          format.html { redirect_to root_path, notice: "This link is already shortened!" }
       end
     end
   end
