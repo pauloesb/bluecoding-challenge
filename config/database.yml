@@ -6,10 +6,12 @@ default: &default
 development:
   <<: *default
   database: bluecoding-challenge_development
-test:
+test: &test
   <<: *default
   database: bluecoding-challenge_test
 
 production:
   <<: *default
   database: bluecoding-challenge_production
+cucumber:
+  <<: *test
