@@ -1,0 +1,2 @@
+class LengthUrl < ApplicationRecord
+end

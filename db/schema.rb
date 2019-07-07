@@ -10,10 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_05_013613) do
+ActiveRecord::Schema.define(version: 2019_07_06_232551) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "length_urls", force: :cascade do |t|
+    t.integer "size", default: 1
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "urls", force: :cascade do |t|
     t.string "original_url"
