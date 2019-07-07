@@ -20,7 +20,7 @@ RSpec.describe "Index Page Features" do
 
     it "go to result page if given a url to shorten it" do
         visit(root_path)
-        url = FactoryBot.create(:url)
+        url = FactoryBot.build(:dummy_url)
         fill_in 'url_original_url', with: url.original_url
         click_button 'Submit'
         expect(current_path).to eql(result_path(Url.last.short_url))
