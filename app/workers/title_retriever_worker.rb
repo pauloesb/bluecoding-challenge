@@ -18,6 +18,8 @@ class TitleRetrieverWorker
         url.update(title: "Error - Too Many Redirections!")
       rescue Errno::ECONNREFUSED
         url.update(title: "Error - Site Unavailable!")
+      rescue SocketError
+        url.update(title: "Error - Doesn't exist!")
       end
     end
 
