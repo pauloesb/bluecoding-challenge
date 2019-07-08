@@ -18,7 +18,11 @@ module UrlConcerns
         size_url = LengthUrl.size
         chars = ['A'..'Z','a'..'z','0'..'9'].map{|x| x.to_a}.flatten
         self.short_url = size_url.times.map{chars.sample}.join
-        Url.find_by_short_url(self.short_url) && (self.short_url = size_url.times.map{chars.sample}.join)
+        while true
+            Url.find_by_short_url(self.short_url) && (self.short_url = size_url.times.map{chars.sample}.join)
+            Url.find_by_short_url(self.short_url) || break
+        end
+        self.short_url
     end
 
     def retrieve_title

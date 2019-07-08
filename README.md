@@ -39,7 +39,11 @@
         size_url = LengthUrl.size
         chars = ['A'..'Z','a'..'z','0'..'9'].map{|x| x.to_a}.flatten
         self.short_url = size_url.times.map{chars.sample}.join
-        Url.find_by_short_url(self.short_url) && (self.short_url = size_url.times.map{chars.sample}.join)
+        while true
+            Url.find_by_short_url(self.short_url) && (self.short_url = size_url.times.map{chars.sample}.join)
+            Url.find_by_short_url(self.short_url) || break
+        end
+        self.short_url
     end
 ```
 - The objective it was to generate the shortest urls to the original urls so for this we consider that the minimum size is 1 and the maximum is infine. 
