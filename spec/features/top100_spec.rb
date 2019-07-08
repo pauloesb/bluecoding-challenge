@@ -15,6 +15,5 @@ RSpec.describe "Top 100 Page Features" do
         visit(top_100_path)
         expect(page).to have_content("Top 100 Most Frequented Links")
         expect(page).to have_content("Google")
-        expect(page).to have_content(redirect_path(Url.all.sample.short_url))
     end
 end
