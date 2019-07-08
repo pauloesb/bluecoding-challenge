@@ -1,6 +1,6 @@
 class UrlsController < ApplicationController
   before_action :find_url, only: [:redirect, :result]
-  @@count = 0
+  @@count = 1
 
   def index 
     @url = Url.new
