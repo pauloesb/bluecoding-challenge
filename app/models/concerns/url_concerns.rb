@@ -19,8 +19,8 @@ module UrlConcerns
         chars = ['A'..'Z','a'..'z','0'..'9'].map{|x| x.to_a}.flatten
         self.short_url = size_url.times.map{chars.sample}.join
         while true
-            Url.find_by_short_url(self.short_url) && (self.short_url = size_url.times.map{chars.sample}.join)
             Url.find_by_short_url(self.short_url) || break
+            self.short_url = size_url.times.map{chars.sample}.join
         end
         self.short_url
     end
