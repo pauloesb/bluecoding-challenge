@@ -35,7 +35,7 @@
 ### Generate Short Url Algorithm
 ```ruby
     def generate_short_url
-        LengthUrl.increase if Url.count > 62**LengthUrl.size
+        LengthUrl.increase if Url.count >= 62**LengthUrl.size
         size_url = LengthUrl.size
         chars = ['A'..'Z','a'..'z','0'..'9'].map{|x| x.to_a}.flatten
         self.short_url = size_url.times.map{chars.sample}.join
