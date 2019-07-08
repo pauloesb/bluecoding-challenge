@@ -1,12 +1,14 @@
 class UrlsController < ApplicationController
   before_action :find_url, only: [:redirect, :result]
+  @@count = 0
 
   def index 
     @url = Url.new
   end
 
   def redirect
-    @url.update(access: @url.access+1)
+    (@@count%2==0) && @url.update(access: @url.access+1)
+    @@count+=1
     redirect_to @url.original_url
   end
 
