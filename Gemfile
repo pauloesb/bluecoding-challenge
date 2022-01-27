@@ -16,7 +16,7 @@ gem 'jquery-rails', '~> 4.3', '>= 4.3.5'
 gem 'gritter', '~> 1.2'
 gem 'csvreader', '~> 1.2', '>= 1.2.3'
 gem 'httparty', '~> 0.17.0'
-gem 'sidekiq', '~> 5.2', '>= 5.2.7'
+gem 'sidekiq', '~> 6.4'
 gem 'foreman', '~> 0.85.0'
 gem 'htmlentities', '~> 4.3', '>= 4.3.4'
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
