@@ -15,7 +15,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'jquery-rails', '~> 4.3', '>= 4.3.5'
 gem 'gritter', '~> 1.2'
 gem 'csvreader', '~> 1.2', '>= 1.2.3'
-gem 'httparty', '~> 0.17.0'
+gem 'httparty', '~> 0.21.0'
 gem 'sidekiq', '~> 5.2', '>= 5.2.7'
 gem 'foreman', '~> 0.85.0'
 gem 'htmlentities', '~> 4.3', '>= 4.3.4'
